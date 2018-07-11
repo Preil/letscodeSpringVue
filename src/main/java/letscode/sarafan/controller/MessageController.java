@@ -57,7 +57,7 @@ public class MessageController {
 
     @PutMapping("{id}")
     public Map<String, String> update (@PathVariable String id, @RequestBody Map<String, String> message) {
-        Map<String, String> messageFromDB = getMessage(message.get("id"));
+        Map<String, String> messageFromDB = getMessage(id);
         messageFromDB.putAll(message);
         messageFromDB.put("id", id);
         return messageFromDB;
@@ -68,6 +68,21 @@ public class MessageController {
         Map<String, String> message = getMessage(id);
         messages.remove(message);
     }
+
+//  test our controller in browser console:
+//  POST:
+//  fetch('/message', {method: 'POST',
+//                      headers: {'Content-Type': 'application/json'},
+//                      body: JSON.stringify({ text: 'Fifth message'})}).then(result => console.log(result))
+
+//    PUT:
+//    fetch('/message/5', {method: 'PUT',
+//                          headers: {'Content-Type': 'application/json'},
+//                          body: JSON.stringify({ text: 'Fifth message 5', id:10})}).then(result => console.log(result))
+
+//    DELETE:
+//    fetch('/message/5', {method: 'DELETE'}).then(result => console.log(result))
+
 
 
 }
