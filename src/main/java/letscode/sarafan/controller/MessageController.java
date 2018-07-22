@@ -37,9 +37,9 @@ public class MessageController {
     public Message update (
             @PathVariable("id") Message messageFromDb,
             @RequestBody Message message
-    ) {
+        ) {
         BeanUtils.copyProperties(message, messageFromDb, "id");
-        return messageRepo.save(message);
+        return messageRepo.save(messageFromDb);
     }
 
     @DeleteMapping("{id}")
